@@ -1,0 +1,12 @@
+.consultant-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* .consultant-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  } 
+*/

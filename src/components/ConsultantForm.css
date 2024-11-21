@@ -1,0 +1,36 @@
+.consultant-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #fff7f7;
+    padding: 15px;
+    border: 1px solid #e30059;
+    border-radius: 8px;
+  }
+  
+  .consultant-form label {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .consultant-form input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .consultant-form button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .consultant-form button[type="submit"] {
+    background-color: #e30059;
+    color: white;
+  }
+  
+  .consultant-form button[type="button"] {
+    background-color: #ccc;
+  }

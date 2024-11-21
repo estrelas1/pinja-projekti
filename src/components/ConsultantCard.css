@@ -1,0 +1,36 @@
+.consultant-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+/*
+.consultant-card {
+  background-color: #f1f1f1;
+  padding: 15px;
+  border-radius: 8px;
+} */ 
+  
+.consultant-card button {
+  margin-top: 10px;
+  background-color: #e30059;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.consultant-card h2 {
+  margin-top: 0;
+  color: #e30059;
+}
+  
+.consultant-card p {
+  margin: 5px 0;
+}
+  
+.consultant-card strong {
+  font-weight: bold;
+}

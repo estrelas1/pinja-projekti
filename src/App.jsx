@@ -1,6 +1,6 @@
-import { useState } from 'react'
-
-import './App.css'
+import { useState } from 'react';
+import ConsultantList from './components/ConsultantList';
+import './App.css';
 
 const App = () => {
   const [consultants, setConsultants] = useState([
@@ -30,22 +30,37 @@ const App = () => {
     },
   ]);
 
+  const [editingConsultant, setEditingConsultant] = useState(null); // editingConsultant on tila, joka kertoo, mikä konsultti on tällä hetkellä muokattavana. Sen arvo on joko null (ei muokkausta käynnissä) tai muokattavan konsultin tiedot
+
+  const handleEdit = (consultant) => { // laittaa editingConsultant-tilaan valitun konsultin
+    setEditingConsultant(consultant);
+  };
+
+  const handleSave = (updatedConsultant) => { // päivittää uudet tiedot
+    setConsultants(
+      consultants.map((consultant) =>
+        consultant.name === updatedConsultant.name ? updatedConsultant : consultant
+      )
+    );
+    setEditingConsultant(null); // tila on taas null
+  };
+
+  const handleCancel = () => {
+    setEditingConsultant(null);
+  };
+
   return (
     <div className="App">
       <h1>Konsulttilista</h1>
-      <div className="consultant-list">
-        {consultants.map((consultant, index) => ( // map: consultants-taulukon jokainen jäsen (konsultti) käydään läpi, ja jokaisesta jäsenestä luodaan oma div-elementti. / lisätään jokaiselle kortille avain (attribute key={index}), joka auttaa Reactia seuraamaan, mitkä elementit muuttuvat, lisätään tai poistetaan.
-          <div className="consultant-card" key={index}> 
-            <h2>{consultant.name}</h2>
-            <p><strong>Koulutus:</strong> {consultant.education} ({consultant.graduationYear})</p>
-            <p><strong>Sertifikaatit:</strong> {consultant.certifications.join(", ")}</p>
-            <p><strong>Teknologiat:</strong> {consultant.technologies.join(", ")}</p>
-            <p><strong>Kokemusvuodet:</strong> {consultant.experienceYears}</p>
-          </div> // join: Muuntaa taulukon yhdeksi merkkijonoksi, jossa sanat erotellaan pilkuilla.
-        ))}
-      </div>
+      <ConsultantList
+        consultants={consultants}
+        editingConsultant={editingConsultant}
+        onEdit={handleEdit}
+        onSave={handleSave}
+        onCancel={handleCancel}
+      />
     </div>
   );
 };
 
-export default App
+export default App;
