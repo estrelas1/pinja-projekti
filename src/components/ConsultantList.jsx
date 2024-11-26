@@ -7,8 +7,8 @@ const ConsultantList = ({ consultants, editingConsultant, onEdit, onSave, onCanc
   return (
     <div className="consultant-list">
       {consultants.map((consultant) => ( // map luo jokaiselle konsultille oman div-elementin
-        <div key={consultant.name}>
-          {editingConsultant && editingConsultant.name === consultant.name ? ( // tarkistaa, onko editingConsultant määritelty (ei null) ja onko editingConsultant.name sama kuin nykyisen konsultin nimi. Jos molemmat ovat tosi, näytetään form.
+        <div key={consultant.id}>
+          {editingConsultant && editingConsultant.id === consultant.id ? ( // tarkistaa, onko editingConsultant määritelty (ei null) ja onko editingConsultant.id sama kuin nykyisen konsultin id. Jos molemmat ovat tosi, näytetään form.
             <ConsultantForm
               consultant={editingConsultant}
               onSave={onSave}

@@ -77,9 +77,7 @@ const ConsultantForm = ({ consultant, onSave, onCancel }) => {
         />
       </label>
       <button type="submit">Tallenna</button>
-      <button type="button" onClick={onCancel}>
-        Peruuta
-      </button>
+      <button type="button" onClick={onCancel}>Peruuta</button>
     </form>
   );
 };

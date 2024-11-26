@@ -5,6 +5,7 @@ import './App.css';
 const App = () => {
   const [consultants, setConsultants] = useState([
     {
+      id: 1,
       name: "Matti Meikäläinen",
       education: "Diplomi-insinööri, Tietotekniikka",
       graduationYear: 2015,
@@ -13,6 +14,7 @@ const App = () => {
       experienceYears: 8
     },
     {
+      id: 2,
       name: "Anni Konsultti",
       education: "Insinööri, Ohjelmistotekniikka",
       graduationYear: 2018,
@@ -21,6 +23,7 @@ const App = () => {
       experienceYears: 8
     },
     {
+      id: 3, 
       name: "Teemu Tuotekehittäjä",
       education: "Kandidaatti, Ohjelmistotekniikka",
       graduationYear: 2020,
@@ -37,9 +40,9 @@ const App = () => {
   };
 
   const handleSave = (updatedConsultant) => { // päivittää uudet tiedot
-    setConsultants(
-      consultants.map((consultant) =>
-        consultant.name === updatedConsultant.name ? updatedConsultant : consultant
+    setConsultants((prevConsultants) =>
+      prevConsultants.map((consultant) =>
+        consultant.id === updatedConsultant.id ? updatedConsultant : consultant
       )
     );
     setEditingConsultant(null); // tila on taas null
