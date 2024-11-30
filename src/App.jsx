@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import ConsultantList from './components/ConsultantList';
+import ConsultantFilter from './components/ConsultantFilter';
 import './App.css';
 
 const App = () => {
@@ -52,11 +53,28 @@ const App = () => {
     setEditingConsultant(null);
   };
 
+  // filter
+  const [selectedEducation, setSelectedEducation] = useState("");
+
+  const handleFilterChange = (education) => {
+    setSelectedEducation(education);
+  };
+
+  const filteredConsultants = consultants.filter((consultant) => {
+    return selectedEducation === "" || consultant.education === selectedEducation;
+  });
+
+
   return (
     <div className="App">
       <h1>Konsulttilista</h1>
+      <ConsultantFilter
+        educationOptions={[...new Set(consultants.map((c) => c.education))]}
+        onFilterChange={handleFilterChange}
+      />
       <ConsultantList
-        consultants={consultants}
+        consultants={filteredConsultants}
+        // consultants={consultants}
         editingConsultant={editingConsultant}
         onEdit={handleEdit}
         onSave={handleSave}

@@ -4,6 +4,16 @@
   gap: 20px;
 }
 
+.consultant-card button:hover,
+.consultant-form button[type="submit"]:hover {
+  background-color: #c9004d;
+}
+
+.consultant-form input:focus {
+  outline: 2px solid #e30059;
+  outline-offset: 2px;
+}
+
 /* .consultant-list {
     display: flex;
     flex-direction: column;

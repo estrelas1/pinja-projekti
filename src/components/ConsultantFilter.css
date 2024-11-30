@@ -1,0 +1,19 @@
+.consultant-filter {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .consultant-filter label {
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  .consultant-filter select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
