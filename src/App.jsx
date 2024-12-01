@@ -53,15 +53,26 @@ const App = () => {
     setEditingConsultant(null);
   };
 
-  // filter
+  // filters:
   const [selectedEducation, setSelectedEducation] = useState("");
 
-  const handleFilterChange = (education) => {
+  const handleEducationFilterChange = (education) => {
     setSelectedEducation(education);
   };
 
+  const [selectedCertification, setSelectedCertification] = useState("");
+
+  const handleCertificationFilterChange = (certification) => {
+    setSelectedCertification(certification);
+  };
+
   const filteredConsultants = consultants.filter((consultant) => {
-    return selectedEducation === "" || consultant.education === selectedEducation;
+    const matchesEducation =
+      selectedEducation === "" || consultant.education === selectedEducation;
+    const matchesCertification =
+      selectedCertification === "" ||
+      consultant.certifications.includes(selectedCertification);
+    return matchesEducation && matchesCertification;
   });
 
 
@@ -70,11 +81,12 @@ const App = () => {
       <h1>Konsulttilista</h1>
       <ConsultantFilter
         educationOptions={[...new Set(consultants.map((c) => c.education))]}
-        onFilterChange={handleFilterChange}
+        certificationOptions={[...new Set(consultants.flatMap((c) => c.certifications))]}
+        onEducationFilterChange={handleEducationFilterChange}
+        onCertificationFilterChange={handleCertificationFilterChange}
       />
       <ConsultantList
         consultants={filteredConsultants}
-        // consultants={consultants}
         editingConsultant={editingConsultant}
         onEdit={handleEdit}
         onSave={handleSave}

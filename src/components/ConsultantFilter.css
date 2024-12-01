@@ -5,10 +5,10 @@
     border-radius: 8px;
     display: flex;
     flex-direction: column;
+    gap: 15px;
   }
   
   .consultant-filter label {
-    margin-bottom: 8px;
     font-weight: bold;
   }
   
