@@ -1,16 +1,17 @@
 .consultant-card {
+  width: 100%;
   background-color: #f9f9f9;
   border: 1px solid #ccc;
   padding: 15px;
   border-radius: 8px;
+  min-width: 300px; /* Varmistaa vähimmäisleveyden */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Lisää kortteihin hieman syvyyttä */
+  margin: auto;
 }
 
 /*
 .consultant-card {
-  background-color: #f1f1f1;
-  padding: 15px;
-  border-radius: 8px;
-} */ 
+  background-color: #f1f1f1; */ 
   
 .consultant-card button {
   margin-top: 10px;

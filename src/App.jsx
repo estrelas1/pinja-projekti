@@ -53,45 +53,58 @@ const App = () => {
     setEditingConsultant(null);
   };
 
-  // filters:
+  // filters
+  // koulutus:
   const [selectedEducation, setSelectedEducation] = useState("");
 
   const handleEducationFilterChange = (education) => {
     setSelectedEducation(education);
   };
 
-  const [selectedCertification, setSelectedCertification] = useState("");
+  // sertifikaatit
+  const [selectedCertifications, setSelectedCertifications] = useState([]);
 
   const handleCertificationFilterChange = (certification) => {
-    setSelectedCertification(certification);
+    setSelectedCertifications((prevSelected) =>
+      prevSelected.includes(certification)
+        ? prevSelected.filter((cert) => cert !== certification) // poista, jos jo valittu
+        : [...prevSelected, certification] // lisää, jos ei valittu
+    );
   };
 
   const filteredConsultants = consultants.filter((consultant) => {
     const matchesEducation =
       selectedEducation === "" || consultant.education === selectedEducation;
-    const matchesCertification =
-      selectedCertification === "" ||
-      consultant.certifications.includes(selectedCertification);
-    return matchesEducation && matchesCertification;
+
+    const matchesCertifications =
+      selectedCertifications.length === 0 ||
+      selectedCertifications.every((cert) =>
+        consultant.certifications.includes(cert)
+      );
+
+    return matchesEducation && matchesCertifications;
   });
 
 
   return (
     <div className="App">
       <h1>Konsulttilista</h1>
-      <ConsultantFilter
-        educationOptions={[...new Set(consultants.map((c) => c.education))]}
-        certificationOptions={[...new Set(consultants.flatMap((c) => c.certifications))]}
-        onEducationFilterChange={handleEducationFilterChange}
-        onCertificationFilterChange={handleCertificationFilterChange}
-      />
-      <ConsultantList
-        consultants={filteredConsultants}
-        editingConsultant={editingConsultant}
-        onEdit={handleEdit}
-        onSave={handleSave}
-        onCancel={handleCancel}
-      />
+      <div className="main-content">
+        <ConsultantFilter
+          educationOptions={[...new Set(consultants.map((c) => c.education))]}
+          certificationOptions={[...new Set(consultants.flatMap((c) => c.certifications))]}
+          selectedCertifications={selectedCertifications}
+          onEducationFilterChange={handleEducationFilterChange}
+          onCertificationFilterChange={handleCertificationFilterChange}
+        />
+        <ConsultantList
+          consultants={filteredConsultants}
+          editingConsultant={editingConsultant}
+          onEdit={handleEdit}
+          onSave={handleSave}
+          onCancel={handleCancel}
+        />
+      </div>
     </div>
   );
 };

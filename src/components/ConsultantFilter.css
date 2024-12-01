@@ -1,19 +1,40 @@
 .consultant-filter {
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #f1f1f1;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
   
-  .consultant-filter label {
-    font-weight: bold;
-  }
+.consultant-filter label {
+  font-weight: bold;
+}
   
-  .consultant-filter select {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
+.consultant-filter select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.certification-filter {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.certification-filter legend {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.certification-filter div {
+  margin: 5px 0;
+}
+
+.certification-filter input {
+  margin-right: 8px;
+}

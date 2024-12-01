@@ -1,6 +1,6 @@
 .consultant-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1fr;
   gap: 20px;
 }
 
@@ -14,9 +14,3 @@
   outline-offset: 2px;
 }
 
-/* .consultant-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  } 
-*/

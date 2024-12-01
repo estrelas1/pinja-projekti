@@ -1,7 +1,17 @@
 import React from "react";
 import "./ConsultantFilter.css";
 
-const ConsultantFilter = ({ educationOptions, certificationOptions, onEducationFilterChange, onCertificationFilterChange }) => {
+const ConsultantFilter = ({ 
+  educationOptions, 
+  certificationOptions, 
+  selectedCertifications,
+  onEducationFilterChange, 
+  onCertificationFilterChange 
+}) => {
+  const handleCertificationChange = (certification) => {
+    onCertificationFilterChange(certification);
+  };
+
   return (
     <div className="consultant-filter">
       <label htmlFor="education-select">Suodata koulutuksen perusteella:</label>
@@ -17,18 +27,22 @@ const ConsultantFilter = ({ educationOptions, certificationOptions, onEducationF
         ))}
       </select>
 
-      <label htmlFor="certification-select">Suodata sertifikaattien perusteella:</label>
-      <select
-        id="certification-select"
-        onChange={(e) => onCertificationFilterChange(e.target.value)}
-      >
-        <option value="">Kaikki sertifikaatit</option>
+      <fieldset className="certification-filter">
+        <legend>Suodata sertifikaattien perusteella:</legend>
         {certificationOptions.map((option) => (
-          <option key={option} value={option}>
-            {option}
-          </option>
+          <div key={option}>
+            <label>
+              <input
+                type="checkbox"
+                value={option}
+                checked={selectedCertifications.includes(option)}
+                onChange={() => handleCertificationChange(option)}
+              />
+              {option}
+            </label>
+          </div>
         ))}
-      </select>
+      </fieldset>
     </div>
   );
 };
