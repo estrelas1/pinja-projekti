@@ -21,7 +21,7 @@ const App = () => {
       graduationYear: 2018,
       certifications: ["Azure Developer Associate", "Kubernetes Certified Administrator"],
       technologies: ["Java", "Spring Boot", "Kubernetes", "Azure"],
-      experienceYears: 8
+      experienceYears: 6
     },
     {
       id: 3, 
@@ -31,6 +31,15 @@ const App = () => {
       certifications: ["Oracle Java SE 11 Developer"],
       technologies: ["Java", "Angular", "MySQL"],
       experienceYears: 3
+    },
+    {
+      id: 4,
+      name: "Sami Sovelluskehittäjä",
+      education: "Diplomi-insinööri, Ohjelmistotekniikka",
+      graduationYear: 2014,
+      certifications: ["AWS Certified Developer", "Scrum Master"],
+      technologies: ["JavaScript", "React", "AWS", "Kubernetes"],
+      experienceYears: 10
     },
   ]);
 
@@ -83,6 +92,14 @@ const App = () => {
     );
   };
 
+  // kokemus:
+  const [minExperienceYears, setMinExperienceYears] = useState(0);
+  
+  const handleExperienceFilterChange = (years) => {
+    setMinExperienceYears(years);
+  };
+
+
   const filteredConsultants = consultants.filter((consultant) => {
     const matchesEducation = // koulutus
       selectedEducation === "" || consultant.education === selectedEducation;
@@ -99,7 +116,10 @@ const App = () => {
         consultant.technologies.includes(tech)
       );
 
-    return matchesEducation && matchesCertifications && matchesTechnologies;
+      const matchesExperience = // kokemus
+      minExperienceYears === 0 || consultant.experienceYears >= minExperienceYears;
+
+    return matchesEducation && matchesCertifications && matchesTechnologies && matchesExperience;
   });
 
 
@@ -113,9 +133,11 @@ const App = () => {
           technologyOptions={[...new Set(consultants.flatMap((c) => c.technologies))]}
           selectedCertifications={selectedCertifications}
           selectedTechnologies={selectedTechnologies}
+          minExperienceYears={minExperienceYears}
           onEducationFilterChange={handleEducationFilterChange}
           onCertificationFilterChange={handleCertificationFilterChange}
           onTechnologyFilterChange={handleTechnologyFilterChange}
+          onExperienceFilterChange={handleExperienceFilterChange}
         />
         <ConsultantList
           consultants={filteredConsultants}

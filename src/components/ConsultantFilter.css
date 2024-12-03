@@ -46,3 +46,19 @@
 .technology-filter input {
   margin-right: 8px;
 }
+
+/* kokemus */
+.experience-filter {
+  margin-top: 20px;
+}
+
+.experience-filter label {
+  font-weight: bold;
+}
+
+.experience-filter input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 70px;
+}

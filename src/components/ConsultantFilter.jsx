@@ -7,9 +7,11 @@ const ConsultantFilter = ({
   technologyOptions,
   selectedCertifications,
   selectedTechnologies,
+  minExperienceYears,
   onEducationFilterChange, 
   onCertificationFilterChange,
-  onTechnologyFilterChange
+  onTechnologyFilterChange,
+  onExperienceFilterChange
 }) => {
   const handleCertificationChange = (certification) => {
     onCertificationFilterChange(certification);
@@ -66,6 +68,17 @@ const ConsultantFilter = ({
           </div>
         ))}
       </fieldset>
+
+      <div className="experience-filter">
+        <label htmlFor="experience-filter">Kokemusvuodet (vähintään): </label>
+        <input
+          id="experience-filter"
+          type="number"
+          value={minExperienceYears}
+          onChange={(e) => onExperienceFilterChange(Number(e.target.value))}
+          min="0"
+        />
+      </div>
     </div>
   );
 };
