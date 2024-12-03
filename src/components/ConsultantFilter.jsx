@@ -4,12 +4,18 @@ import "./ConsultantFilter.css";
 const ConsultantFilter = ({ 
   educationOptions, 
   certificationOptions, 
+  technologyOptions,
   selectedCertifications,
+  selectedTechnologies,
   onEducationFilterChange, 
-  onCertificationFilterChange 
+  onCertificationFilterChange,
+  onTechnologyFilterChange
 }) => {
   const handleCertificationChange = (certification) => {
     onCertificationFilterChange(certification);
+  };
+  const handleTechnologyChange = (technology) => {
+    onTechnologyFilterChange(technology);
   };
 
   return (
@@ -28,7 +34,7 @@ const ConsultantFilter = ({
       </select>
 
       <fieldset className="certification-filter">
-        <legend>Suodata sertifikaattien perusteella:</legend>
+        <h3>Suodata sertifikaattien perusteella:</h3>
         {certificationOptions.map((option) => (
           <div key={option}>
             <label>
@@ -37,6 +43,23 @@ const ConsultantFilter = ({
                 value={option}
                 checked={selectedCertifications.includes(option)}
                 onChange={() => handleCertificationChange(option)}
+              />
+              {option}
+            </label>
+          </div>
+        ))}
+      </fieldset>
+
+      <fieldset className="technology-filter">
+        <h3>Suodata teknologioiden perusteella:</h3>
+        {technologyOptions.map((option) => (
+          <div key={option}>
+            <label>
+              <input
+                type="checkbox"
+                value={option}
+                checked={selectedTechnologies.includes(option)}
+                onChange={() => handleTechnologyChange(option)}
               />
               {option}
             </label>

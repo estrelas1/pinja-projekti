@@ -61,8 +61,8 @@ const App = () => {
     setSelectedEducation(education);
   };
 
-  // sertifikaatit
-  const [selectedCertifications, setSelectedCertifications] = useState([]);
+  // sertifikaatit:
+  const [selectedCertifications, setSelectedCertifications] = useState([]); // taulukko
 
   const handleCertificationFilterChange = (certification) => {
     setSelectedCertifications((prevSelected) =>
@@ -72,17 +72,34 @@ const App = () => {
     );
   };
 
+  // teknologiat:
+  const [selectedTechnologies, setSelectedTechnologies] = useState([]);
+
+  const handleTechnologyFilterChange = (technology) => {
+    setSelectedTechnologies((prevSelected) =>
+      prevSelected.includes(technology)
+        ? prevSelected.filter((tech) => tech !== technology)
+        : [...prevSelected, technology]
+    );
+  };
+
   const filteredConsultants = consultants.filter((consultant) => {
-    const matchesEducation =
+    const matchesEducation = // koulutus
       selectedEducation === "" || consultant.education === selectedEducation;
 
-    const matchesCertifications =
+    const matchesCertifications = // sertifikaatit
       selectedCertifications.length === 0 ||
       selectedCertifications.every((cert) =>
         consultant.certifications.includes(cert)
       );
 
-    return matchesEducation && matchesCertifications;
+    const matchesTechnologies = // teknologiat
+      selectedTechnologies.length === 0 ||
+      selectedTechnologies.every((tech) =>
+        consultant.technologies.includes(tech)
+      );
+
+    return matchesEducation && matchesCertifications && matchesTechnologies;
   });
 
 
@@ -93,9 +110,12 @@ const App = () => {
         <ConsultantFilter
           educationOptions={[...new Set(consultants.map((c) => c.education))]}
           certificationOptions={[...new Set(consultants.flatMap((c) => c.certifications))]}
+          technologyOptions={[...new Set(consultants.flatMap((c) => c.technologies))]}
           selectedCertifications={selectedCertifications}
+          selectedTechnologies={selectedTechnologies}
           onEducationFilterChange={handleEducationFilterChange}
           onCertificationFilterChange={handleCertificationFilterChange}
+          onTechnologyFilterChange={handleTechnologyFilterChange}
         />
         <ConsultantList
           consultants={filteredConsultants}

@@ -4,8 +4,8 @@
   border: 1px solid #ccc;
   padding: 15px;
   border-radius: 8px;
-  min-width: 300px; /* Varmistaa vähimmäisleveyden */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Lisää kortteihin hieman syvyyttä */
+  min-width: 250px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin: auto;
 }
 
@@ -25,7 +25,7 @@
 
 .consultant-card h2 {
   margin-top: 0;
-  color: #e30059;
+  /* color: #e30059; */
 }
   
 .consultant-card p {

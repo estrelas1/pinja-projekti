@@ -10,6 +10,7 @@
   
 .consultant-filter label {
   font-weight: bold;
+  margin-top: 4px;
 }
   
 .consultant-filter select {
@@ -18,7 +19,9 @@
   border-radius: 4px;
 }
 
-.certification-filter {
+/* sertifikaatit ja teknologiat */
+.certification-filter,
+.technology-filter {
   margin-top: 20px;
   padding: 10px;
   background-color: #f9f9f9;
@@ -26,15 +29,20 @@
   border-radius: 8px;
 }
 
-.certification-filter legend {
+.certification-filter h3,
+.technology-filter h3 {
+  font-size: 16px;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 17px;
+  margin-top: 4px;
 }
 
-.certification-filter div {
+.certification-filter div,
+.technology-filter div {
   margin: 5px 0;
 }
 
-.certification-filter input {
+.certification-filter input,
+.technology-filter input {
   margin-right: 8px;
 }
