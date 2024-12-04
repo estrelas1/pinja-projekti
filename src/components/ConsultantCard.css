@@ -9,18 +9,19 @@
   margin: auto;
 }
 
-/*
-.consultant-card {
-  background-color: #f1f1f1; */ 
-  
-.consultant-card button {
+.consultant-card-button {
   margin-top: 10px;
-  background-color: #e30059;
+  background-color: #e30059; 
   color: white;
   border: none;
   padding: 8px 15px;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.consultant-card-button:hover {
+  background-color: #a4003f;
 }
 
 .consultant-card h2 {
@@ -34,4 +35,28 @@
   
 .consultant-card strong {
   font-weight: bold;
+}
+
+/* download-cv-button */
+.download-cv-button {
+  margin-top: 10px;
+  margin-left: 7px;
+  background-color: white;
+  color: black;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  border-color: #191919;
+  transition: background-color 0.3s ease;
+}
+
+.download-cv-button:hover {
+  background-color: #191919;
+  color: white;
+  border-color: #191919;
+}
+
+.download-cv-button:focus {
+  outline: none;
 }

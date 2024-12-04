@@ -1,36 +1,49 @@
 .consultant-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    background-color: #fff7f7;
-    padding: 15px;
-    border: 1px solid #e30059;
-    border-radius: 8px;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #fff7f7;
+  padding: 15px;
+  border: 1px solid #e30059;
+  border-radius: 8px;
+}
   
-  .consultant-form label {
-    display: flex;
-    flex-direction: column;
-  }
+.consultant-form label {
+  display: flex;
+  flex-direction: column;
+}
   
-  .consultant-form input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
+.consultant-form input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.consultant-form input:focus {
+  outline: 2px solid #e30059;
+  outline-offset: 2px;
+}
+
+/* button */
+.consultant-form button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
   
-  .consultant-form button {
-    padding: 8px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
+.consultant-form button[type="submit"] {
+  background-color: #e30059;
+  color: white;
+}
+.consultant-form button[type="submit"]:hover {
+  background-color: #c9004d;
+}
   
-  .consultant-form button[type="submit"] {
-    background-color: #e30059;
-    color: white;
-  }
-  
-  .consultant-form button[type="button"] {
-    background-color: #ccc;
-  }
+.consultant-form button[type="button"] {
+  background-color: #ccc;
+}
+.consultant-form button[type="button"]:hover {
+  background-color: #b6b5b5;
+}

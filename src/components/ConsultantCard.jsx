@@ -1,4 +1,6 @@
 import React from 'react';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import ConsultantCV from './ConsultantCV';
 import './ConsultantCard.css';
 
 const ConsultantCard = ({ consultant, onEdit }) => {
@@ -17,7 +19,19 @@ const ConsultantCard = ({ consultant, onEdit }) => {
       <p>
         <strong>Kokemusvuodet:</strong> {consultant.experienceYears}
       </p>
-      <button onClick={() => onEdit(consultant)}>Muokkaa</button>
+
+      <button className="consultant-card-button" onClick={() => onEdit(consultant)}>Muokkaa</button>
+      
+      <PDFDownloadLink // PDF-latauspainike
+        document={<ConsultantCV consultant={consultant} />}
+        fileName={`${consultant.name}_CV.pdf`}
+      >
+        {({ loading }) => (
+          <button className="download-cv-button">
+            {loading ? 'Luodaan CV:tä...' : 'Lataa CV'}
+          </button>
+        )}
+      </PDFDownloadLink>
     </div>
   );
 };
