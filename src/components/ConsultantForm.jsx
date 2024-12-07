@@ -74,6 +74,7 @@ const ConsultantForm = ({ consultant, onSave, onCancel }) => {
           type="number"
           value={formState.experienceYears}
           onChange={(e) => handleChange('experienceYears', parseInt(e.target.value, 10))}
+          min="0"
         />
       </label>
       <button type="submit">Tallenna</button>

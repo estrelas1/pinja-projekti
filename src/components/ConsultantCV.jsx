@@ -11,9 +11,14 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 18,
     marginBottom: 10,
+    fontFamily: 'Helvetica-Bold'
   },
   section: {
     marginBottom: 15,
+  },
+  label: {
+    fontFamily: 'Helvetica-Bold',
+    marginBottom: 3,
   },
   text: {
     marginBottom: 5,
@@ -24,18 +29,32 @@ const ConsultantCV = ({ consultant }) => (
   <Document>
     <Page style={styles.page}>
       <Text style={styles.header}>{consultant.name}</Text>
+
       <View style={styles.section}>
+        <Text style={styles.label}>Koulutus:</Text>
         <Text style={styles.text}>
-          <strong>Koulutus:</strong> {consultant.education} ({consultant.graduationYear})
+          {consultant.education} ({consultant.graduationYear})
         </Text>
+      </View>
+      
+      <View style={styles.section}>
+        <Text style={styles.label}>Sertifikaatit:</Text>
         <Text style={styles.text}>
-          <strong>Sertifikaatit:</strong> {consultant.certifications.join(', ')}
+          {consultant.certifications.join(', ')}
         </Text>
+      </View>
+
+      <View style={styles.section}>
+        <Text style={styles.label}>Teknologiat:</Text>
         <Text style={styles.text}>
-          <strong>Teknologiat:</strong> {consultant.technologies.join(', ')}
+          {consultant.technologies.join(', ')}
         </Text>
+      </View>
+
+      <View style={styles.section}>
+        <Text style={styles.label}>Kokemusvuodet:</Text>
         <Text style={styles.text}>
-          <strong>Kokemusvuodet:</strong> {consultant.experienceYears}
+          {consultant.experienceYears}
         </Text>
       </View>
     </Page>
