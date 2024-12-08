@@ -62,7 +62,7 @@ const App = () => {
     setEditingConsultant(null);
   };
 
-  // filters
+  // Filters
   // koulutus:
   const [selectedEducation, setSelectedEducation] = useState("");
 
@@ -125,7 +125,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Pinjan osaamisenhallinnan ohjelmisto</h1>
+      <h1>Osaamisenhallinnan ohjelmisto</h1>
       <div className="main-content">
         <ConsultantFilter
           educationOptions={[...new Set(consultants.map((c) => c.education))]}

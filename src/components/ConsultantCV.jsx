@@ -7,21 +7,38 @@ const styles = StyleSheet.create({
     padding: 30,
     fontSize: 12,
     fontFamily: 'Helvetica',
+    backgroundColor: '#f8f8f8'
   },
   header: {
     fontSize: 18,
     marginBottom: 10,
-    fontFamily: 'Helvetica-Bold'
+    fontFamily: 'Helvetica-Bold',
+    color: '#333',
+    textAlign: 'center'
   },
   section: {
     marginBottom: 15,
+    borderBottom: '1px solid #ddd'
   },
   label: {
     fontFamily: 'Helvetica-Bold',
-    marginBottom: 3,
+    marginBottom: 5,
+    fontSize: 13,
+    color: '#444'
   },
   text: {
     marginBottom: 5,
+    fontSize: 12,
+    color: '#666'
+  },
+  list: {
+    marginLeft: 15,
+    marginBottom: 5
+  },
+  listItem: {
+    fontSize: 12,
+    color: '#666',
+    marginBottom: 3
   },
 });
 
@@ -39,24 +56,31 @@ const ConsultantCV = ({ consultant }) => (
       
       <View style={styles.section}>
         <Text style={styles.label}>Sertifikaatit:</Text>
-        <Text style={styles.text}>
-          {consultant.certifications.join(', ')}
-        </Text>
+        <View style={styles.list}>
+            {consultant.certifications.map((cert, index) => (
+              <Text key={index} style={styles.listItem}>
+                {cert}
+              </Text>
+            ))}
+          </View>
       </View>
 
       <View style={styles.section}>
         <Text style={styles.label}>Teknologiat:</Text>
-        <Text style={styles.text}>
-          {consultant.technologies.join(', ')}
-        </Text>
+        <View style={styles.list}>
+            {consultant.technologies.map((tech, index) => (
+              <Text key={index} style={styles.listItem}>
+                {tech}
+              </Text>
+            ))}
+          </View>
       </View>
 
       <View style={styles.section}>
         <Text style={styles.label}>Kokemusvuodet:</Text>
-        <Text style={styles.text}>
-          {consultant.experienceYears}
-        </Text>
+        <Text style={styles.text}>{consultant.experienceYears}</Text>
       </View>
+
     </Page>
   </Document>
 );
