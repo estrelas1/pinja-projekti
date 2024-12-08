@@ -125,7 +125,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Konsulttilista</h1>
+      <h1>Pinjan osaamisenhallinnan ohjelmisto</h1>
       <div className="main-content">
         <ConsultantFilter
           educationOptions={[...new Set(consultants.map((c) => c.education))]}
