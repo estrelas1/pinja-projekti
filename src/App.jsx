@@ -63,6 +63,12 @@ const App = () => {
   };
 
   // Filters
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+  const toggleFilter = () => {
+    setIsFilterOpen((prevState) => !prevState);
+  };
+
   // koulutus:
   const [selectedEducation, setSelectedEducation] = useState("");
 
@@ -127,18 +133,23 @@ const App = () => {
     <div className="App">
       <h1>Osaamisenhallinnan ohjelmisto</h1>
       <div className="main-content">
-        <ConsultantFilter
-          educationOptions={[...new Set(consultants.map((c) => c.education))]}
-          certificationOptions={[...new Set(consultants.flatMap((c) => c.certifications))]}
-          technologyOptions={[...new Set(consultants.flatMap((c) => c.technologies))]}
-          selectedCertifications={selectedCertifications}
-          selectedTechnologies={selectedTechnologies}
-          minExperienceYears={minExperienceYears}
-          onEducationFilterChange={handleEducationFilterChange}
-          onCertificationFilterChange={handleCertificationFilterChange}
-          onTechnologyFilterChange={handleTechnologyFilterChange}
-          onExperienceFilterChange={handleExperienceFilterChange}
-        />
+        <button className="toggle-button" onClick={toggleFilter}>
+          {isFilterOpen ? 'Piilota suodattimet' : 'Näytä suodattimet'}
+        </button>
+        <div className={`filter-container ${isFilterOpen ? 'open' : ''}`}> {/* jos isFilterOpen === true: "className="filter-container open" */}
+          <ConsultantFilter
+            educationOptions={[...new Set(consultants.map((c) => c.education))]}
+            certificationOptions={[...new Set(consultants.flatMap((c) => c.certifications))]}
+            technologyOptions={[...new Set(consultants.flatMap((c) => c.technologies))]}
+            selectedCertifications={selectedCertifications}
+            selectedTechnologies={selectedTechnologies}
+            minExperienceYears={minExperienceYears}
+            onEducationFilterChange={handleEducationFilterChange}
+            onCertificationFilterChange={handleCertificationFilterChange}
+            onTechnologyFilterChange={handleTechnologyFilterChange}
+            onExperienceFilterChange={handleExperienceFilterChange}
+          />
+        </div>
         <ConsultantList
           consultants={filteredConsultants}
           editingConsultant={editingConsultant}

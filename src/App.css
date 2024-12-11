@@ -24,8 +24,59 @@ h1 {
   font-size: 45px; 
 }
 
+@media (max-width: 768px) {
+  h1 {
+    font-size: 30px;
+    text-align: center;
+    margin: 10px;
+  }
+}
+
 .main-content {
   display: flex;
   flex-direction: row; /* filter ja lista vierekkäin */
   gap: 20px;
+}
+
+
+/* filtterin asettelu kapeilla näytöillä */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column; /* filtterit listan yläpuolella */
+  }
+
+  .consultant-filter {
+    width: 95%;
+    display: none;
+  }
+
+  .filter-container.open .consultant-filter {
+    display: flex; /* näkyvissä, kun "open" luokka lisätään */
+  }
+
+  .toggle-button {
+    display: block;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #e30059;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .toggle-button:hover {
+    background-color: #b30047;
+  }
+
+  .consultant-list {
+    width: 95%;
+  }
+}
+
+@media (min-width: 769px) {
+  .toggle-button {
+    display: none; /* piilotetaan nappi isommilla näytöillä */
+  }
 }
